@@ -80,8 +80,6 @@ def draw_upside_down_wall(rectangle, n, window):
         window.render(0.05)
 
 
-
-
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # ----------------------------------------------------------------------
