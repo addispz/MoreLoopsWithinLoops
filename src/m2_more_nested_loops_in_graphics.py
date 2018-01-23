@@ -49,10 +49,38 @@ def draw_upside_down_wall(rectangle, n, window):
     and n is nonnegative.
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #     Some tests are already written for you (above).
     # ------------------------------------------------------------------
-    
+    rectangle_new = rectangle.clone()
+    for k in range(n + 1):
+        corner1_1 = rectangle.corner_1.x - ((rectangle.get_width() / 2) * k)
+        corner2_1 = rectangle.corner_1.y - ((rectangle.get_height()) * k)
+        corner1_2 = rectangle.corner_2.x - ((rectangle.get_width() / 2) * k)
+        corner2_2 = rectangle.corner_2.y - ((rectangle.get_height()) * k)
+
+        corner1 = rg.Point(corner1_1, corner2_1)
+        corner2 = rg.Point(corner1_2, corner2_2)
+        rectangle_new.corner_1 = corner1
+        rectangle_new.corner_2 = corner2
+
+        rectangle_new.attach_to(window)
+
+        for j in range(k):
+            new_rectangle = rectangle_new.clone()
+
+            corner1_x = rectangle_new.corner_1.x + (rectangle_new.get_width() * j)
+            corner1_y = rectangle_new.corner_2.x + (rectangle_new.get_width() * j)
+
+            new_rectangle.corner_1.x = corner1_x
+            new_rectangle.corner_2.x = corner1_y
+
+            new_rectangle.attach_to(window)
+            window.render(0.05)
+        window.render(0.05)
+
+
+
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
